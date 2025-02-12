@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChitoFert Kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="ChitoFert">
+            <h1>ChitoFert Kalkulator</h1>
+        </div>
+        <nav>
+            <a href="#calculator"><i class="fas fa-calculator"></i> Kalkulator</a>
+            <a href="#schedule"><i class="fas fa-calendar-alt"></i> Jadwal</a>
+            <a href="#fields"><i class="fas fa-tractor"></i> Lahan</a>
+            <a href="#forum"><i class="fas fa-comments"></i> Forum</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Kalkulator Section -->
+        <section id="calculator" class="active">
+            <h2><i class="fas fa-calculator"></i> Kalkulator Dosis Pupuk</h2>
+            <div class="calculator-grid">
+                <div class="input-group">
+                    <label for="plant-type">Jenis Tanaman:</label>
+                    <select id="plant-type">
+                        <option value="padi">Padi</option>
+                        <option value="jagung">Jagung</option>
+                        <option value="kedelai">Kedelai</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="area">Luas Lahan:</label>
+                    <input type="number" id="area">
+                    <select id="unit">
+                        <option value="m2">m²</option>
+                        <option value="hectare">Hektar</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Jenis Pupuk:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="fertilizer-type" value="spray" checked> Spray</label>
+                        <label><input type="radio" name="fertilizer-type" value="granular"> Butiran</label>
+                    </div>
+                </div>
+
+                <button onclick="calculateDosis()">Hitung</button>
+                
+                <div class="result">
+                    <h3>Rekomendasi:</h3>
+                    <p id="fertilizer-result">-</p>
+                    <p id="water-result">-</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jadwal Section -->
+        <section id="schedule">
+            <h2><i class="fas fa-calendar-alt"></i> Jadwal Pemupukan</h2>
+            <div class="weather-widget">
+                <h3>Prakiraan Cuaca 7 Hari</h3>
+                <div id="weather-container"></div>
+            </div>
+            <div id="calendar"></div>
+        </section>
+
+        <!-- Lahan Section -->
+        <section id="fields">
+            <h2><i class="fas fa-tractor"></i> Manajemen Lahan</h2>
+            <div id="field-list"></div>
+            <button onclick="showAddFieldForm()">Tambah Lahan</button>
+        </section>
+
+        <!-- Forum Section -->
+        <section id="forum">
+            <h2><i class="fas fa-comments"></i> Forum Petani</h2>
+            <div class="forum-posts">
+                <!-- Forum posts will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="map">
+            <h3>Lokasi Kios Pupuk Terdekat</h3>
+            <div id="map"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>
